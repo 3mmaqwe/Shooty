@@ -1,34 +1,42 @@
 char leftKey,rightKey;
 float x,y,speed;
-PImage player;
-
+Entity player;
+Laser Projectile[];
+int projectileMax, pSpeed;
+int projectileCount= 0;
 void setup(){
+  frameRate(400);
+  imageMode(CENTER);
   size(600,800);
-  player=loadImage("player.png");
-  leftKey='a';
-  rightKey='d';
   x=width/2;
   y=height/1.125;
-  speed=5;
+  speed=1;
+  projectileMax = 1000;
+  pSpeed = 5;
+  Projectile = new Laser[projectileMax];
+  for(int z =0; z <1000; z++){
+    Projectile[z] = new Laser(pSpeed);
+  }
+  player= new Entity("player.png", x,y, speed);
+  
+  leftKey='a';
+  rightKey='d';
 }
 
 void draw(){
   background(0);
-  image(player,x,y);
-  if (keyPressed) {
-    if (key == leftKey&&x>0) {
-      x -= speed;
-    }
-    if (key == rightKey&&x<600) {
-      x += speed;
-    }
-    if(key==CODED){
-      if(keyCode==LEFT&&x>0){
-        x -= speed;
+  x= player.draw();
+  if (keyPressed){
+    if(key == ' '){
+      if (projectileCount == projectileMax){
+       projectileCount = 0; 
       }
-      if(keyCode==RIGHT&&x<600){
-        x += speed;
-      }
+     
+     Projectile[projectileCount].draw(x,y-40); 
+     projectileCount += 1;
     }
   }
+ for (int z = 0; z < projectileMax; z++){
+  Projectile[z].update(); 
+ }
 }
