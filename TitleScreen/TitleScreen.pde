@@ -2,6 +2,7 @@ PImage madBoi,
 illuminerter,
 player;
 
+PFont ORCAExtended, Vivaldii, Dialog;
 float x,y, w,z;
 void setup(){
   size(600, 800);
@@ -14,7 +15,9 @@ void setup(){
   w = -200;
   z = -400;
   
-  
+  ORCAExtended = loadFont("OCRAExtended-48.vlw");
+  Vivaldii = loadFont("Vivaldii-48.vlw");
+  Dialog = loadFont("Dialog.plain-48.vlw");
 }
 
 void draw(){
@@ -23,15 +26,19 @@ background(0);
 textMode(CENTER);
 textSize(60);
 fill(0,236,7);
-text("LAZER", 200, 100);
-text("SHOOTY SHOOT", 50, 150);
+textFont(ORCAExtended);
+text("LAZER", 210, 100);
+text("SHOOTY SHOOT", 100, 150);
 
 textSize(20);
-text("Save planet please", 200, 175);
+textFont(Vivaldii);
+text("Save planet please", 200, 185);
 
+
+textFont(Dialog);
 textSize(32);
 fill(random(255), random(255), random(255));
-text("Press any key to start!", 125, 750);
+text("Press any key to start!", 155, 750);
 
 fill(0,255,0);
 textSize(32);
