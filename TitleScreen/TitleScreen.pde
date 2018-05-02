@@ -2,6 +2,9 @@ PImage madBoi,
 illuminerter,
 player;
 
+
+boolean red;  // for color and of off for "save the planet"
+
 PFont ORCAExtended, Vivaldii, Dialog;
 float x,y, w,z;
 void setup(){
@@ -32,6 +35,21 @@ text("SHOOTY SHOOT", 100, 150);
 
 textSize(20);
 textFont(Vivaldii);
+// switching fills for save the planet
+
+
+if (frameCount % 25 == 0){ 
+  red = true;
+}
+if (frameCount % 50 == 0){
+  red = false;
+}
+if(red){
+  fill(255,172,178);
+} 
+if(red == false){
+  fill(0,236,7);;}
+
 text("Save planet please", 200, 185);
 
 
