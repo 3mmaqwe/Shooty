@@ -10,7 +10,6 @@ class Entity{
     
   }
   float draw(){
-  background(0);
   image(txtr,x,y);
   if (keyPressed) {
     if (key == leftKey&&x>0) {
@@ -30,5 +29,15 @@ class Entity{
     }
     return x;
   }
-
+  void update(int remaining){
+    image(txtr,x,y);
+    if (remaining == 0){
+     //levelup(); 
+    }
+    if (x == width || x == 0){
+      y+= 50;
+      speed = speed*-1;
+    }
+    x += speed;
+  }
 }
