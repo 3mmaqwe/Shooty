@@ -61,8 +61,9 @@ if (!title){
   enemySpeed = 0.125;
   Enemy = new Entity[enemyMax];
   dead = new boolean[enemyMax];
-  String type = "madBoi.png";
+  String type;
   for(int z =0; z<enemyMax; z++){
+    type = "enemy"+int(random(1,3))+".png";
     dead[z] = false;
     Enemy[z] = new Entity(type, z * 60, 40, enemySpeed);
   }
@@ -72,7 +73,7 @@ if (!title){
   leftKey='a';
   rightKey='d';
   
-  Bg = loadImage("basic"+int(random(1,3))+".jpg");
+  Bg = loadImage("basic"+int(random(0,5))+".jpg");
  
   
   
