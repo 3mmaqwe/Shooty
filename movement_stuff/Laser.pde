@@ -11,13 +11,13 @@ class Laser{
    y = py;
    fill(random(255),random(255),random(255));
    rectMode(CENTER);
-   rect(x,y,2,20);
+   rect(x,y,7,20);
    y += speed;
   }
   void update(){
    fill(random(255),random(255),random(255));
    rectMode(CENTER);
-   rect(x,y,2,20);
+   rect(x,y,7,20);
    y += speed;
   }
 }
