@@ -1,10 +1,7 @@
-import processing.sound.*;
-
-SoundFile shoot, hit;
-
 char leftKey,rightKey;
 float x,y,speed, enemySpeed;
 PImage Bg;
+boolean dead[];
 Entity player;
 Entity Enemy[];
 Laser Projectile[];
@@ -14,9 +11,6 @@ void setup(){
   frameRate(400);
   imageMode(CENTER);
   size(600,800);
-  
-  shoot = new SoundFile(this,"shoot.wav");
-  hit = new SoundFile(this,"hit.wav");
   
   x=width/2;
   y=height/1.125;
@@ -51,20 +45,19 @@ void draw(){
   x= player.draw();
   if (keyPressed){
     if(key == ' '){
-      shoot.play();
       if (projectileCount == projectileMax){
        projectileCount = 0; 
       }
      
      Projectile[projectileCount].draw(x,y-40); 
      projectileCount += 1;
-     key = 'p';
+     
     }
   }
  for (int z = 0; z < projectileMax; z++){
   Projectile[z].update(); 
  }
  for (int z= 0; z < enemyMax; z++){
-  Enemy[z].update(enemyMax);
+  Enemy[z].update(enemyMax, dead[z]);
  }
 }

@@ -2,6 +2,7 @@ class Entity{
   PImage txtr;
   float x, y, speed;
   int pSpeed;
+  boolean dead = false;
   Entity(String Type,float gx,float gy, float Speed){
     txtr = loadImage(Type);
     x = gx;
@@ -29,7 +30,8 @@ class Entity{
     }
     return x;
   }
-  void update(int remaining){
+  void update(int remaining, boolean dead){
+    if (!dead){ 
     image(txtr,x,y);
     if (remaining == 0){
      //levelup(); 
@@ -39,5 +41,5 @@ class Entity{
       speed = speed*-1;
     }
     x += speed;
-  }
+  }}
 }
