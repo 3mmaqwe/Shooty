@@ -25,8 +25,8 @@ void setup(){
   size(600,800);
 if(title){
   playerZ = loadImage("player.png");
-  madBoi = loadImage("madBoi.png");
-  illuminerter = loadImage("illuminerter.png");
+  madBoi = loadImage("enemy1.png");
+  illuminerter = loadImage("enemy2.png");
   xz = 0.0;
   yz = width/2.0;
   wz = -200;
@@ -181,4 +181,11 @@ if (!title){
    dead[z] = Enemy[z].check(coords[zz], dead[z]);  
    }}
   }
+/* if we want 
+ if(dead[1]){
+  hit.play();
+  } 
+   if(dead[2]){
+  hit.play();
+  }  */
 }
