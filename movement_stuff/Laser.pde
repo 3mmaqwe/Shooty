@@ -3,6 +3,7 @@ class Laser{
  float y;
  int speed;
  int laser = 0;
+ PVector xy = new PVector(0,0);
   Laser(int Speed){
    speed = -Speed;
  }
@@ -11,13 +12,18 @@ class Laser{
    y = py;
    fill(random(255),random(255),random(255));
    rectMode(CENTER);
-   rect(x,y,5,20);
+   rect(x,y,7,20);
    y += speed;
   }
-  void update(){
+  PVector update(){
    fill(random(255),random(255),random(255));
    rectMode(CENTER);
-   rect(x,y,5,20);
+   rect(x,y,7,20);
    y += speed;
+   xy.set(int(x),int(y));
+   return xy;
+  }
+  PVector initialize(){
+   return xy; 
   }
 }

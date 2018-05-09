@@ -2,7 +2,6 @@ class Entity{
   PImage txtr;
   float x, y, speed;
   int pSpeed;
-  boolean dead = false;
   Entity(String Type,float gx,float gy, float Speed){
     txtr = loadImage(Type);
     x = gx;
@@ -31,15 +30,21 @@ class Entity{
     return x;
   }
   void update(int remaining, boolean dead){
-    if (!dead){ 
+    if(!dead){
     image(txtr,x,y);
-    if (remaining == 0){
-     //levelup(); 
-    }
     if (x == width || x == 0){
       y+= 50;
       speed = speed*-1;
     }
     x += speed;
-  }}
+  }
 }
+ boolean check(PVector Lxy, boolean dead){
+    if (!dead){
+    PVector xy = new PVector(x,y);
+    if (xy.dist(Lxy) <= 20){
+     return true; 
+    } else {
+    return false;
+ }}else {return true;
+}}}
