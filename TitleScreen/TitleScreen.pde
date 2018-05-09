@@ -1,22 +1,22 @@
 PImage madBoi,
 illuminerter,
-player;
+playerZ;
 
-
+boolean title = true;
 boolean red;  // for color and of off for "save the planet"
 
 PFont ORCAExtended, Vivaldii, Dialog;
-float x,y, w,z;
+float xz,yz, wz,zz;
 void setup(){
   size(600, 800);
   
-  player = loadImage("player.png");
+  playerZ = loadImage("player.png");
   madBoi = loadImage("madBoi.png");
   illuminerter = loadImage("illuminerter.png");
-  x = 0.0;
-  y = width/2.0;
-  w = -200;
-  z = -400;
+  xz = 0.0;
+  yz = width/2.0;
+  wz = -200;
+  zz = -400;
   
   ORCAExtended = loadFont("OCRAExtended-48.vlw");
   Vivaldii = loadFont("Vivaldii-48.vlw");
@@ -24,6 +24,11 @@ void setup(){
 }
 
 void draw(){
+if(keyPressed){
+  title = false;
+}
+  
+if (title){  
 background(0);
 
 textMode(CENTER);
@@ -61,35 +66,42 @@ text("Press any key to start!", 155, 750);
 fill(0,255,0);
 textSize(32);
 
-translate(x,y);
+translate(xz,yz);
 imageMode(CENTER);
-image(player,0,0);
+image(playerZ,0,0);
 text("You", -30,62);
-translate(-x,0);
+translate(-xz,0);
 
-translate(w,0);
+translate(wz,0);
 image(madBoi, 0, 0);
 text("MadBoi", -60, 62);
-translate(-w,0);
+translate(-wz,0);
 
-translate(z,0);
+translate(zz,0);
 image(illuminerter, 0,0);
 text("Illuminerter", -90,62);
-translate(-z,0);
+translate(-zz,0);
 
-x += 1.0;
-w += 1.0;
-z += 1.0;
+xz += 1.0;
+wz += 1.0;
+zz += 1.0;
 
 
 
-if (x > width+player.width){
-  x = -100;
+if (xz > width+playerZ.width){
+  xz = -100;
 }
-if (w > width+madBoi.width){
-  w = -100;
+if (wz > width+madBoi.width){
+  wz = -100;
 }
-if (z > width+illuminerter.width){
-  z = -100;
-}
+if (zz > width+illuminerter.width){
+  zz = -100;
+    }
+  }
+
+if(!title){  
+  //all the draw stuff in here
+  background(255);
+  }   
+  
 }
